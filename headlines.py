@@ -6,12 +6,14 @@ app = Flask(__name__)
 def index():     
     return '<h1>Welcome!</h1>'
 
-
+#flask
 
 @app.route('/headlines/<nm>')
 
 def hello_name(nm):
-    return render_template('name.html', name=nm)       
+    return render_template('name.html', name=nm) 
+
+
 
 
 if __name__ == '__main__':  
