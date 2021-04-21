@@ -38,7 +38,7 @@ def fetch_news ():
     for result in results_dict:
         headline = (result['title']) 
         if count <6:
-            headline_count = f'{count}. {headline}'
+            headline_count = f'{headline}'
             headline_list.append(headline_count)
         count +=1
 
@@ -61,22 +61,33 @@ print(headline_list)
 
 #print(response.text)
 
-# app = Flask(__name__)
+app = Flask(__name__)
 
-# @app.route('/')
-# def index():     
-#     return '<h1>Welcome!</h1>'
+@app.route('/')
+def index():     
+    return '<h1>Welcome!</h1>'
 
-# #flask
+#flask
 
-# @app.route('/headlines/<nm>')
+@app.route('/name/<nm>')
 
-# def hello_name(nm):
-#     return render_template('name.html', name=nm) 
-
-
+def hello_name(nm):
+    return render_template('name.html', name=nm) 
 
 
-# if __name__ == '__main__':  
-#     print('starting Flask app', app.name)  
-#     app.run(debug=True)
+@app.route('/headlines/<nm>')
+
+def headline(nm):
+
+    lines = headline_list
+
+    return render_template('headlines.html', name=nm,
+    headlines = lines) 
+
+
+
+
+
+if __name__ == '__main__':  
+    print('starting Flask app', app.name)  
+    app.run(debug=True)
